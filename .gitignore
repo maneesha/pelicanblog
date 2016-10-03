@@ -1,0 +1,6 @@
+*.pid
+*.py[cod]
+*.swp
+output/
+
+
