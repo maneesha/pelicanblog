@@ -3,7 +3,8 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Maneesha Sane'
-SITENAME = 'cooking-parenting-programming'
+SITENAME = 'Cooking * Parenting * Programming'
+SITESUBTITLE = "Not necessarily in that order"
 SITEURL = ''
 
 PATH = 'content'
