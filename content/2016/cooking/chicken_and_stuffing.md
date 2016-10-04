@@ -19,7 +19,7 @@ Ingredients
 
 Preheat oven to 375 degrees F.
 
-Melt 4 tablespoons butter and mix in the herbs. Rub this all over the chicken, inside and out.  Set chicken aside on a plat.
+Microwave 4 tablespoons butter until almost melted and mix in the herbs. Rub this all over the chicken, inside and out.  Set chicken aside on a plate.
 
 Melt remaining 2 tablespoons butter in large oven safe skillet and add onions and celery.  Cook 5-7 minutes, until they are soft.
 
