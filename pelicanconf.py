@@ -40,3 +40,4 @@ ARTICLE_URL = '{category}/{date:%Y}/{date:%m}/{slug}.html'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+DISPLAY_SEARCH_FORM = True
