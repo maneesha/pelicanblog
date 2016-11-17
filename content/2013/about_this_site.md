@@ -120,7 +120,7 @@ I decided to use SSH to upload my site, so I answered no to all the other method
 
 I generally used the well written documentation on the Pelican website, but I need to keep a reminder of things that I did to get Pelican working with my situation.  I'm using this blog post as a place to keep these notes up to date and easily accessible.
 
-Pelican content is written in markdown. The default folder is called 'content' but can be called anything. If you keep the default name, build your site like this:
+Pelican content is written in markdown. The default folder is called 'content' but can be called anything. If you keep the default name, build your site like this (run this command from your top level Pelican directory):
 
 ```
 $ pelican content
@@ -132,7 +132,18 @@ If you rename it, for example, to 'bucket' then build your site like this:
 $ pelican bucket
 ```
 
-However, all this can be done Fabric or Make.  I had trouble getting Fabric to work with Python 3.5 so I used Make.
+This generates the site to the output folder. The files can be viewed at output/index.html, but this way, it can't always locate CSS and other assets.  To really view your site, you need to run a Python webserver.  In Python 3:
+
+```
+cd output
+python -m http.server
+```
+and then preview your site [locally](http://localhost:8000).
+
+From there, you can deploy, and the [Pelican docs](http://docs.getpelican.com/en/stable/publish.html#deployment) give some information on how to do so.
+
+
+However, all this can be done Fabric or Make.  I had trouble getting Fabric to work with Python 3.5 so I used Make. Run this command from your top level Pelican directory)
 
 ```
 $ make html
