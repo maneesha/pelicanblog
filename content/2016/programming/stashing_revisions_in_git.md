@@ -1,5 +1,5 @@
 Title: Stashing revisions in Git
-Date: 2016-11-13
+Date: 2016-11-22
 Category: Programming
 Tags: git
 
