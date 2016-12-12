@@ -7,7 +7,7 @@ This website is built in [Pelican](http://docs.getpelican.com/en/3.6.3/index.htm
 
 I'm running Ubuntu 16.04 and have both Python 2.7 and 3.5 installed on my computer.
 
-I began with creating and starting a virtual environment:
+I began with creating and starting a virtual environment named pelican3. This virtual environment will automatically be started; otherwise it can be manually started using the workon command.
 
 ```
 $ mkvirtualenv --python /usr/bin/python3 pelican3
@@ -143,7 +143,7 @@ and then preview your site [locally](http://localhost:8000).
 From there, you can deploy, and the [Pelican docs](http://docs.getpelican.com/en/stable/publish.html#deployment) give some information on how to do so.
 
 
-However, all this can be done Fabric or Make.  I had trouble getting Fabric to work with Python 3.5 so I used Make. Run this command from your top level Pelican directory)
+However, all this can be done Fabric or Make.  I had trouble getting Fabric to work with Python 3.5 so I used Make. Run this command from your top level Pelican directory.
 
 ```
 $ make html
