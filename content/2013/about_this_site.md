@@ -209,7 +209,7 @@ The line
 {% for pg in PAGES | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
 ```
 
-should acually be 
+should actually be 
 
 ```
 {% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
