@@ -185,7 +185,7 @@ $ make rsync_upload
 
 I just needed to enter my password.
 
-I'm a minimalist, so I wanted to keep my site visually simple.  I changed the theme to bluediea - it's not much different from Pelican's default theme but has some additional features. I manually edited some of the css to set my own color scheme.
+I'm a minimalist, so I wanted to keep my site visually simple.  I changed the theme to [bluediea](https://github.com/blueicefield/pelican-blueidea) - it's not much different from Pelican's default theme but has some additional features. I manually edited some of the css to set my own color scheme.
 
 I enabled the ability to search my site by adding 
 
@@ -195,8 +195,28 @@ DISPLAY_SEARCH_FORM = True
 
 to pelicanconf.py. The code for this is already in base.html.  Note this uses Duck Duck Go as its search engine, and won't work on this site until Duck Duck Go has indexed it, so that could be some time.  Someday I'll use Pelican's [tipue](http://www.tipue.com/search/) search so I'm not dependent on a service like Duck Duck Go or Google indexing my site.
 
+Once I made this site include pages and not just posts, I wanted the pages to display at the top. The theme's documentation makes you think all you have to do is set this in `pelicanconf.py`:
 
+```
+DISPLAY_PAGES_ON_MENU = True
+```
 
+However that doesn't actually work because there is an improperly capitalized variable name.  
+
+The line 
+
+`{% for pg in PAGES | sort(attribute=PAGES_SORT_ATTRIBUTE) %}`
+
+should acually be 
+
+`{% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}`
+
+This then adds the pages to the same title bar as the categories.  To get the categories to show in a subtitle bar and not the title bar, you need to add this to `pelicanconf.py`:
+
+```
+DISPLAY_CATEGORIES_ON_MENU = False
+DISPLAY_CATEGORIES_ON_SUBMENU = True
+```
 
 
 
