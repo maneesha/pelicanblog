@@ -205,11 +205,15 @@ However that doesn't actually work because there is an improperly capitalized va
 
 The line 
 
-`{% for pg in PAGES | sort(attribute=PAGES_SORT_ATTRIBUTE) %}`
+```
+{% for pg in PAGES | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+```
 
 should acually be 
 
-`{% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}`
+```
+{% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+```
 
 This then adds the pages to the same title bar as the categories.  To get the categories to show in a subtitle bar and not the title bar, you need to add this to `pelicanconf.py`:
 
