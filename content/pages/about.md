@@ -7,7 +7,7 @@ Title: About me
 
 In 2010, a severly broken leg left me homebound for a few months. I used that time to start teaching myself programming.  I started off in Python (which will always be my dominant language), got deep in to SQL, and picked up some VBA, HTML, CSS, and JavaScript along the way. For the past couple of years I have been managing software training programs for two sibling organizations called [Software Carpentry](https://software-carpentry.org/) and [Data Carpentry](http://www.datacarpentry.org/) – which has been a really nice way of combining this varied background. I get to work with some amazing scientists, researchers, and educators through this work. I'm also one of the organizers of the local [Python Users Group](https://www.meetup.com/phillypug/) where I also get to meet cool Python programmers and hear about the work they do.
 
-I have a few hobby projects that seem to be in a perpetual state of being half-done.  These include:
+I have a few hobby projects that seem to be in a perpetual state of being half-done.  I attribute this to [Zeno's Paradox](https://en.wikipedia.org/wiki/Zeno%27s_paradoxes) - I will never reach the end point.  These projects include:
 
 * trying to download and analyze on-time performance for SEPTA's Regional Rail system
 * trying to [find and analyze results](http://phlcitycouncil.pythonanywhere.com/) from [Philadelphia's](http://www.phila.gov) [City Council](http://phlcouncil.com/) [elections](https://www.philadelphiavotes.com/).  
