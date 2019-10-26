@@ -6,12 +6,14 @@ Tags: Chicken
 This is adapted from a Cooks Illustrated recipe for Quick Stovetop Roast Chicken (November/December 2008), to be not so quick -- because long and slow roasted chicken is way better.  Active cooking time remains the same but total cooking time goes up by about an hour.
 
 Chicken 
+
 * 6 bone in, skin on chicken thighs, trimmed of excess fat
 * Salt and pepper
 * 1 tb vegetable oil
 * 1 - 1.25 cups chicken broth
 
 Pan Sauce
+
 * 1 medium shallot chopped fine (about 3-4 tablespoons)
 * 1 tsp all purpose flour
 * zest of 1 lemon
