@@ -16,12 +16,12 @@ The `-r` flag says to search recursively, in the directories inside your current
 
 Other flags include:
 
-`-l` Display only the filename and path in the results. Otherwise it displays the filename and path along with the target text bounded by a few characters.
-`-w` Set word boundaries, so it will find only the word surrounded by whitespace. So `grep -r java .` will find `javascript` while `grep -rw java .` will not.   
-`-n` Displays line numbers of where the search term appears in the document in the results.
-`i` Makes the search case insensitive.
-`-o` Display only the target text in the results.
-`E` Use regular expressions in the search term. This will find the word 'target' and display the 3 characters before it and the 10 characters after it.
+* `-l` Display only the filename and path in the results. Otherwise it displays the filename and path along with the target text bounded by a few * characters.
+* `-w` Set word boundaries, so it will find only the word surrounded by whitespace. So `grep -r java .` will find `javascript` while `grep -rw java  .` will not.   
+* `-n` Displays line numbers of where the search term appears in the document in the results.
+* `i` Makes the search case insensitive.
+* `-o` Display only the target text in the results.
+* `E` Use regular expressions in the search term. This will find the word 'target' and display the 3 characters before it and the 10 characters after it.
 
 ```
 grep -rnoE '.{0,3}target.{0,10}' . 
@@ -35,12 +35,8 @@ grep -rnoE '.{0,3}\bb[a-z]+r\b.{0,10}' .
 
 ```
 
-`--exclude-dir=dirA` Excludes directory `dirA` from the recursive search.
-`--exclude-dir={dirA,dirB}` Excludes directories `dirA` and `dirB` from the recursive search. Note it does not work if there's just one directory inside the `{ }`.  It also does not work if you put spaces in between the directory names or around the equal sign.
-
-
-
-
+* `--exclude-dir=dirA` Excludes directory `dirA` from the recursive search.
+* `--exclude-dir={dirA,dirB}` Excludes directories `dirA` and `dirB` from the recursive search. Note it does not work if there's just one directory inside the `{ }`.  It also does not work if you put spaces in between the directory names or around the equal sign.
 
 ### Use your terminal's history
 
@@ -92,26 +88,26 @@ Find all files (as opposed to directories which would get `-type d` ) in the `~/
 
 Other flags include:
 
-`-mtime -1` Modified in the last 1 day
-`-mmin -30` Modified in the last 30 minutes
-`-size +1024M` Files over 1 gigabyte in size
-`! -name "*.pdf"` Exclude files with `.pdf` extension
-`-delete` Delete the results. *Do not do this! This is irrecoverable!*
+* `-mtime -1` Modified in the last 1 day
+* `-mmin -30` Modified in the last 30 minutes
+* `-size +1024M` Files over 1 gigabyte in size
+* `! -name "*.pdf"` Exclude files with `.pdf` extension
+* `-delete` Delete the results. *Do not do this! This is irrecoverable!*
 
 
 ### Navigate around the your current command
 
 If you're typing a long command at your terminal prompt, you may want to easily navigate through the command.
 
-`ctrl-A`  Goes to start of line
-`ctrl-E`  Goes to end of line
-`alt-F`   Goes forward 1 word   
-`alt-B`   Goes back 1 word
-`ctrl-U`  Deletes from cursor to start of line
-`ctrl-K`  Deletes from cursor to end of line
-`alt-D`   Deletes from cursor to end of word
-`ctrl-XX` Toggle between current cursor position and start of line 
+* `ctrl-A`  Goes to start of line
+* `ctrl-E`  Goes to end of line
+* `alt-F`   Goes forward 1 word   
+* `alt-B`   Goes back 1 word
+* `ctrl-U`  Deletes from cursor to start of line
+* `ctrl-K`  Deletes from cursor to end of line
+* `alt-D`   Deletes from cursor to end of word
+* `ctrl-XX` Toggle between current cursor position and start of line 
 
 ### Scroll through the terminal
 
-In the terminal, hitting up arrow will cycle through your history of commands. So up arrow can't be used to scroll up through the terminal. Instead, you can hit either `shift-PgUp` / `shift-PgDn` to scroll through one screen at a time; or `ctrl-shift-up arrow` / `ctrl-shift-down arrow` to scroll through line by line.
+In the terminal, hitting up arrow will cycle through your history of commands. So up arrow can't be used to scroll up through the terminal. Instead, you can hit either `shift-PgUp` / `shift-PgDn` to scroll through one screen at a time; or `ctrl-shift-up arrow` / `ctrl-shift-down arrow` to scroll through line by line if you want to keep your hands on the keyboard.
