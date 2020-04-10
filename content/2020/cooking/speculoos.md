@@ -37,6 +37,6 @@ This is how Serious Eats [makes toasted sugar](https://www.seriouseats.com/recip
 
 * Preheat oven to 350 degrees F.
 * Put 2 cups of sugar in a wide, heavy oven safe skillet.  
-* Put the skillet in the oven and stir every 20-30 minutes until golden brown.
+* Put the skillet in the oven and stir every 20-30 minutes until golden brown.  This can take 2 to 4 hours, depending on how golden brown you want it.
 * Let cool in the skillet before putting in a jar.
 
