@@ -80,6 +80,23 @@ You can pipe `grep` into `history` and find all occurences of a given word in yo
 ```
 history | grep "phrase to search"
 ```
+### Find files
+
+Find files by location, type, and name
+
+```
+find ~/path/to/files/  -name "thesis*.*" -type f
+```
+
+Find all files (as opposed to directories which would get `-type d` ) in the `~/path/to/files/` directory named `thesis-something`.
+
+Other flags include:
+
+`-mtime -1` Modified in the last 1 day
+`-mmin -30` Modified in the last 30 minutes
+`-size +1024M` Files over 1 gigabyte in size
+`! -name "*.pdf"` Exclude files with `.pdf` extension
+`-delete` Delete the results. *Do not do this! This is irrecoverable!*
 
 
 ### Navigate around the your current command
