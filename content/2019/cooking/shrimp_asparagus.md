@@ -17,7 +17,7 @@ Adapted from a recipe in [Bon Appetit](https://www.bonappetit.com/recipe/shrimp-
 * 6 scallions, ends trimmed, cut into 1-inch pieces on the diagonal
 * 1 3-inch piece ginger, peeled, thinly sliced crosswise
 * 1 pound asparagus, woody ends snapped off, cut into 1-inch pieces on the diagonal
-* 1/4 cup roasted peanutes
+* 1/4 cup roasted peanuts
 * 1 tablespoon roasted sesame seeds
 
 
