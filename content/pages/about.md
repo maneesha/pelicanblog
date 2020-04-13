@@ -1,5 +1,9 @@
-Title: About me
-
+---
+title: About me
+layout: page 
+status: hidden
+slug: all-about-me
+---
 
 **About me**
 
