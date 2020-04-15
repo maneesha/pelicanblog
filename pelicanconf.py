@@ -43,3 +43,7 @@ DISPLAY_SEARCH_FORM = True
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_SUBMENU = True
+
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['tipue_search']
+DIRECT_TEMPLATES = ["index", "tags", "categories", "archives", "search", "404"]
