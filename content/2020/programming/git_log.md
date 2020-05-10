@@ -47,7 +47,7 @@ git log --after="2019-07-01" --before="2019-09-30"
 Shows commits in a date range
 <hr>
 ```
-git log --grep="cookie"
+git log --grep="mesa verde"
 ```
 
 Shows commits where commit message contains a term
@@ -61,11 +61,11 @@ Shows commits just for a given file
 <hr>
 
 ```
-git log -S"cookie"
+git log -S"heisenberg"
 
 # OR 
 
-git log -G"\bc[a-z]*ie\b"
+git log -G"\bh[a-z]*rg\b"
 
 ```
 
