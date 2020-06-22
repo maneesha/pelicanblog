@@ -47,3 +47,14 @@ DISPLAY_CATEGORIES_ON_SUBMENU = True
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['tipue_search']
 DIRECT_TEMPLATES = ["index", "tags", "categories", "archives", "search", "404"]
+
+
+MARKDOWN = {
+    "extension_configs": {
+        "markdown.extensions.admonition": {},
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
+        "markdown.extensions.extra": {},
+        "markdown.extensions.meta": {},
+        "markdown.extensions.toc": {"permalink": " "},
+    }
+}
