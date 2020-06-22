@@ -7,6 +7,9 @@ This website is built in [Pelican](http://docs.getpelican.com/en/3.6.3/index.htm
 
 I'm running Ubuntu 16.04 and have both Python 2.7 and 3.5 installed on my computer.
 
+!!! note
+    2020-06-20: I'm now a few versions ahead in Ubuntu and Python. I've also updated the theme I am using, so there are a few updates and comments below.  These were all relevant far before 2020-06-20 but I've just updated this page now.
+
 I began with creating and starting a virtual environment named pelican3. This virtual environment will automatically be started; otherwise it can be manually started using the workon command.
 
 ```
@@ -20,6 +23,11 @@ and then installing Pelican and Markdown:
 $ pip install pelican markdown
 ```
 A few other things came with that, so running pip freeze (which sends a list of all installed Python packages to stout) gives me this:
+
+
+!!! note
+    2020-06-20: Many of these packages will have updated versions.
+    
 
 ```
 blinker==1.4
@@ -183,6 +191,11 @@ Since I already set up Pelican to use ssh, I can now push my site to my server w
 $ make rsync_upload 
 ```
 
+!!! note
+
+    2020-06-20: This command has changed.  Use `make upload` instead.   
+
+
 I just needed to enter my password.
 
 I'm a minimalist, so I wanted to keep my site visually simple.  I changed the theme to [bluediea](https://github.com/blueicefield/pelican-blueidea) - it's not much different from Pelican's default theme but has some additional features. I manually edited some of the css to set my own color scheme.
@@ -194,6 +207,10 @@ DISPLAY_SEARCH_FORM = True
 ```
 
 to pelicanconf.py. The code for this is already in base.html.  Note this uses Duck Duck Go as its search engine, and won't work on this site until Duck Duck Go has indexed it, so that could be some time.  Someday I'll use Pelican's [tipue](http://www.tipue.com/search/) search so I'm not dependent on a service like Duck Duck Go or Google indexing my site.
+
+
+!!! note
+    2020-06-20: This site now has [the Elegant theme's search functionality](https://elegant.oncrashreboot.com/add-search) set up.  
 
 Once I made this site include pages and not just posts, I wanted the pages to display at the top. The theme's documentation makes you think all you have to do is set this in `pelicanconf.py`:
 
@@ -214,6 +231,9 @@ should actually be
 ```
 {% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
 ```
+!!! note
+    2020-06-20: The above typo is no longer relevant.  
+
 
 This then adds the pages to the same title bar as the categories.  To get the categories to show in a subtitle bar and not the title bar, you need to add this to `pelicanconf.py`:
 
