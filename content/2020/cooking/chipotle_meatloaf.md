@@ -48,3 +48,14 @@ Beat egg in small bowl and add to bowl with vegetables and bread crumb and mix t
 Pack this mixture into a loaf pan to shape it.  Turn the loaf out onto the prepared baking sheet. 
 
 Bake for 15 minutes. Then brush meatloaf with the glaze and return to the oven until the meatloaf registers 155 degrees F.  Let rest for 20 minutes before slicing and serving.  
+
+##### COOKING SCHEDULE
+
+To be able to eat this at 7:00 pm:
+
+4:30 *Start prepping everything*  
+5:05 *Meatloaf goes in oven*  
+5:20 *Take meatloaf out to glaze it*  
+5:25 *Meatloaf goes back in oven*  
+6:40 *Remove meatloaf from oven to rest*  
+7:00 *Enjoy!*
