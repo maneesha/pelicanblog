@@ -28,7 +28,7 @@ Shows just the last 4 commits
 
 <hr>
 ```
-git log -name-status
+git log --name-status
 ```
 
 Shows the files that were changed in each commit
