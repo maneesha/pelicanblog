@@ -45,7 +45,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_SUBMENU = True
 
 PLUGIN_PATHS = ['plugins']
-# PLUGINS = ['tipue_search']
+PLUGINS = ['tipue_search']
 PLUGINS = []
 DIRECT_TEMPLATES = ["index", "tags", "categories", "archives", "search", "404"]
 
