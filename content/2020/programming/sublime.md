@@ -41,3 +41,7 @@ Any directory can be opened in this way.
 subl ~/path/to/my/directory
 ```
 
+#### Fix mouse scroll wheel
+
+I work on a laptop with touchpad and external mouse.  Sometimes the scroll wheel on my mouse stops working in Sublime.  If I tap on my touchpad, the scroll wheel's powers are reset.
+
