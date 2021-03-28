@@ -5,11 +5,11 @@ Category: Cooking
 Tags: chicken, indian 
 ---
 
-I always cringe a little bit when I hear the word "curry" - that word does not mean what you think it means.  In any case, I'm just calling this Goan Chicken Curry because I don't know what else to call it.  It's loosely based on:
+I always cringe a little bit when I hear the word "curry" - that word does not mean what you think it means.  In any case, I'm just calling this Goan Chicken Curry because I don't know what else to call it.  It's loosely based on a few recipes I found online:
 
-https://searchingforspice.com/red-goan-chicken/
-https://greatcurryrecipes.net/2018/09/19/chicken-curry-with-coconut-goan-xacutti/
-http://myindiantaste.com/goan-coconut-chicken-curry-recipe/
+* [Red Goan  Chicken](https://searchingforspice.com/red-goan-chicken/)
+* [Goan Xacutti](https://greatcurryrecipes.net/2018/09/19/chicken-curry-with-coconut-goan-xacutti/)
+* [Goan Coconut Chicken](http://myindiantaste.com/goan-coconut-chicken-curry-recipe/)
 
 
 ## Ingredients
@@ -23,6 +23,8 @@ http://myindiantaste.com/goan-coconut-chicken-curry-recipe/
 * 2 tsp cumin seeds
 * 1 tbsp coriander seeds
 * 3 cloves
+* 1 tsp whole peppercorns
+* 1 tbsp tamarind paste
 * 1 tsp turmeric
 * 9-12 cloves garlic (depending on size)
 * 2-3 inches ginger root, peeled and cut in half-inch pieces
