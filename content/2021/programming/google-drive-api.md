@@ -159,9 +159,35 @@ unique_owners = set(owners)
 print(unique_owners)
 ```
 
-
 # For a single file owner, create a list of all files owned by that user
 
+This creates a list of files owned by that user.  It then saves this to a `.json` file using `json.dump`.  Side note about the [difference between `json.dump` and `json.dumps`](https://docs.python.org/3.8/library/json.html): `json.dumps` transforms a list to a json formatted string; `json.dump` transforms a list into a json file.
+
+```python
+def get_user_files(file_list, user_email, json_filename):
+    """
+    Function takes three arguments:
+    - a list of google drive files
+    - a user email address
+    - a filename string with .json extension
+    Function returns a list of files owned by that user and
+    saves the list to a json file.
+    """
+
+    user_files = []
+
+    counter = 0
+    for i in file_list:
+        if i['owners'][0]['emailAddress'] == user_email:
+            user_files.append(i)
+            counter += 1
+
+    print(counter, i['owners'][0]['emailAddress'])  # just a way to watch the code run
+    with open(json_filename, 'w') as files:
+        json.dump(user_files, files)
+
+    return user_files
+```
 
 # Separate this list into Google Drive files and non-Google Drive files.  
 
