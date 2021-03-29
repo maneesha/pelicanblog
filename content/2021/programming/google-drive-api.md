@@ -103,7 +103,7 @@ This should display something like:
 
 # Get all files in the google drive
 
-We now are going to get all the files in the Google Drive for `example.com`.  Each file in Google Drive has associated metadata, like its name, id, url, etc.  This is a full list of [all metadata for a file](https://developers.google.com/drive/api/v3/reference/files).
+We now are going to get all the files in the Google Drive for `example.com`.  Each file in Google Drive has associated metadata, like its name, id, url, etc.  This is a full list of [all metadata for a file](https://developers.google.com/drive/api/v3/reference/files). Many of the metadata fields are self explanatory.  For `mimeType`: this the file type such as [Google's own file types](https://developers.google.com/drive/api/v3/mime-types).  Non-Google file types (pdfs, uploaded images, etc.) are not well documented. Later we'll use a brute force method to check if it's one of Google's own filetypes by seeing if the string contains `google-apps`.
 
 Here we create a list of what parameters we want to get. Note this is not actually `list` data type in Python.  Rather is a `string` of comma separated values enclosed in parentheses.  We also want to include a `nextPageToken` so we can go through each page of the results. 
 
