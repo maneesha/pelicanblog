@@ -103,7 +103,51 @@ This should display something like:
 
 # Get all files in the google drive
 
-This returns all the files in that user's google drive.  Depending on how big this is, this can take several minutes to run.
+We now are going to get all the files in the Google Drive for `example.com`.  Each file in Google Drive has associated metadata, like its name, id, url, etc.  This is a full list of [all metadata for a file](https://developers.google.com/drive/api/v3/reference/files).
+
+Here we create a list of what parameters we want to get. Note this is not actually `list` data type in Python.  Rather is a `string` of comma separated values enclosed in parentheses.  We also want to include a `nextPageToken` so we can go through each page of the results. 
+
+
+```python
+parameters_to_get = "(id, kind, name,  owners, webViewLink, parents, modifiedTime, permissions, mimeType)"
+included_fields = "nextPageToken, files{}".format(parameters_to_get)
+
+def get_files(service):
+    '''
+    Returns list of dictionaries of all files in that user's domain.
+    '''
+    result = []
+    page_token = None
+    while True:
+
+        param = {}
+        if page_token:
+            param['pageToken'] = page_token
+        files = service.files().list(fields=included_fields, **param).execute()
+
+        result.extend(files['files'])
+        page_token = files.get('nextPageToken')
+        if not page_token:
+            break
+
+    return result
+
+```
+
+We can now run this function, and spot check some of the results.
+
+```python
+# This may take a few minutes to run.
+all_example_files = get_files(service=service)
+
+# See how many files were returned
+print("Count files returned:", len(all_example_files))
+
+# Peek at the first and last files in the list
+print(all_example_files[0])
+print(all_example_files[-1])
+```
+
 
 # Get a list (set) of all unique file owners
 
