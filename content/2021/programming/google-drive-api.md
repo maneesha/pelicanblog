@@ -191,8 +191,37 @@ def get_user_files(file_list, user_email, json_filename):
 
 # Separate this list into Google Drive files and non-Google Drive files.  
 
-Ownership changes work only for google drive files, not for uploaded images, pdfs, Excel spreadsheets, etc.  
+Non google files are pdfs, excel files, image files, etc. that were uploaded to Google Drive by the user.  Google Drive file ownership can be changed within the same domain programatically.  Non-Google Drive file ownership can not be changed programmatically.  These files need to be moved to a [Shared Drive](https://support.google.com/a/answer/7212025) and them moved back to the original location.
 
+```python
+def split_by_file_type(file_list, google_filename, nongoogle_filename):
+    '''
+     Function takes three arguments:
+    - a list of google drive files
+    - a filename string with .json extension to hold the google files
+    - a filename string with .json extension to hold the non-google files
+    Function returns two lists of files (google and non-google) owned by that user and
+    saves the lists to a json file.
+    '''
+    google_files = []
+    non_google_files = []
+    for file in file_list:
+        if "google-apps" in k['mimeType']:
+            google_files.append(file)
+        else:
+            non_google_files.append(file)
+
+    with open(google_filename, 'w') as files:
+        json.dump(google_files, files)
+
+    with open(nongoogle_filename, 'w') as files:
+        json.dump(non_google_files, files)
+
+    return (google_files, non_google_files)
+
+# Example use.  This will save two files to the current working directory.
+split_by_file_type(dev_files, 'dev_google_files.json', 'dev_non_google_files.json')
+```
 
 
 # Change file ownership from dev@gmail.com to example_holder@gmail.com. 
