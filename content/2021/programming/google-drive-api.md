@@ -41,21 +41,51 @@ To [enable the Google Drive API](https://developers.google.com/drive/api/v3/quic
 ), you'll be asked to set up an app. You may be asked to select an account if you are logged in to more than one google account.  If this happens, be sure to select `dev@example.com`. Give your app it a name when prompted. Select "Desktop app" for your OAuth Client.  You'll be asked to download client configuration.  Save this file (`credentials.json`) to the `dev-example` directory.
 
 Dev will now install the [Google Client Library](https://developers.google.com/drive/api/v3/quickstart/python#step_2_install_the_google_client_library
-), ideally in some sort of virtual environment (that's a topic for another day as there are many ways to manage Python environments).  
+), ideally in some sort of virtual environment (that's a topic for another day as there are many ways to manage Python environments)
+.
+
+# Get started with the code
+
+The next sections describe the code used to set up credentials and run each step of the process. I like doing this in a Jupyter notebook, as it allows the user to run code step by step and view results in between.
+
 
 # Set up service credentials 
 
-Now that we have enabled the API and installed the necessary libraries, we can set up our service credentials.  This function will create Dev's service credentials. The `service` will be used in all subsequent API calls.
+Now that we have enabled the API and installed the necessary libraries, we can set up our service credentials.  This function will create Dev's service credentials. The `service` will be used in all subsequent API calls.  This creates a `token.pickle` file in the same working directory.  You may be asked to select an account to use this.  If this happens, be sure to select `dev@example.com`. This code is adapted from the [sample setup in Google's documentation](https://developers.google.com/drive/api/v3/quickstart/python#step_3_set_up_the_sample).
+
+The scopes in that documentation are `read-only`; many [levels of scopes can be set up](https://developers.google.com/drive/api/v2/about-auth#OAuth2Authorizing). The scopes in this example allow full, permissive scope to access all of a user's files, excluding the Application Data folder. If you change your scopes, you must delete the `token.pickle` file so that it can be re-generated.
 
 ```
-service function goes here.
+SCOPES = ['https://www.googleapis.com/auth/drive']
+
+def set_creds():
+    """Sets Google Drive API credentials
+    """
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+
+    service = build('drive', 'v3', credentials=creds)
+
+    return service
+
+service = set_creds()
 ```
-
-Scopes here are just read-only
-https://developers.google.com/drive/api/v3/quickstart/python#step_3_set_up_the_sample
-
-Here are all the scopes that are available.
-https://developers.google.com/drive/api/v2/about-auth#OAuth2Authorizing
 
 # Make sure it's you
 
