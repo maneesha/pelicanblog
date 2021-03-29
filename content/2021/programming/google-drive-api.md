@@ -55,7 +55,7 @@ Now that we have enabled the API and installed the necessary libraries, we can s
 
 The scopes in that documentation are `read-only`; many [levels of scopes can be set up](https://developers.google.com/drive/api/v2/about-auth#OAuth2Authorizing). The scopes in this example allow full, permissive scope to access all of a user's files, excluding the Application Data folder. If you change your scopes, you must delete the `token.pickle` file so that it can be re-generated.
 
-```
+```python
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def set_creds():
@@ -91,13 +91,13 @@ service = set_creds()
 
 This code is a quick check to show you information about yourself. You should see your name, email, and other information listed.
 
-```
+```python
 print(service.about().get(fields='user').execute())
 ```
 
 This should display something like:
 
-```
+```text
 {'user': {'kind': 'drive#user', 'displayName': 'Dev User', 'photoLink': 'https://lh3.googleusercontent.com/a-/abcde12345', 'me': True, 'permissionId': '9876543210', 'emailAddress': 'dev@example.com'}}
 ```
 
