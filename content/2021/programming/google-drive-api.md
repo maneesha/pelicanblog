@@ -148,9 +148,16 @@ print(all_example_files[0])
 print(all_example_files[-1])
 ```
 
-
 # Get a list (set) of all unique file owners
+We can now get a list of all unique files owners in our domain. This isn't entirely necessary for what we are doing now, but is useful in general when you want to identify all the people who have ownership access to files in your domain. We create a list of all owners in our files, and tranform that list into a set to get sorted, unique values.
 
+```python
+owners = []
+for f in all_example_files:
+    owners.append(f['owners'][0]['emailAddress'])
+unique_owners = set(owners)
+print(unique_owners)
+```
 
 
 # For a single file owner, create a list of all files owned by that user
