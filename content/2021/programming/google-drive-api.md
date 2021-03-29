@@ -89,7 +89,17 @@ service = set_creds()
 
 # Make sure it's you
 
-This code will show you information about yourself. You should see your name, email, and other information listed.
+This code is a quick check to show you information about yourself. You should see your name, email, and other information listed.
+
+```
+print(service.about().get(fields='user').execute())
+```
+
+This should display something like:
+
+```
+{'user': {'kind': 'drive#user', 'displayName': 'Dev User', 'photoLink': 'https://lh3.googleusercontent.com/a-/abcde12345', 'me': True, 'permissionId': '9876543210', 'emailAddress': 'dev@example.com'}}
+```
 
 # Get all files in the google drive
 
