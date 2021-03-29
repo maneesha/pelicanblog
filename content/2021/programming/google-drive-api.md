@@ -33,17 +33,23 @@ The rough workflow is listed below, with sample code following. Depending on Dev
 
 # Set up Google API 
 
-https://developers.google.com/drive/api/v3/quickstart/python
+We begin working in the `example.com` workspace. Ensure Dev is signed in to `dev@example.com`.  Create a directory called `dev-example`.
 
-When asked to select a google account, be sure to select the one that you want to move the ownership from (dev@gmail.com).
-https://developers.google.com/drive/api/v3/quickstart/python#step_1_turn_on_the
+To begin, the Dev must [set up the Google Drive API and install necessary Python packages](https://developers.google.com/drive/api/v3/quickstart/python).  Note even though Google's documentation requires Python 2.6 or greater, please use Python 3.x as 2.x versions [have been deprecated for over a year](https://www.python.org/doc/sunset-python-2/).
 
-Install the Google Client Library.  Ideally do this in some sort of virtual environment.
-https://developers.google.com/drive/api/v3/quickstart/python#step_2_install_the_google_client_library
+To [enable the Google Drive API](https://developers.google.com/drive/api/v3/quickstart/python#step_1_turn_on_the
+), you'll be asked to set up an app. You may be asked to select an account if you are logged in to more than one google account.  If this happens, be sure to select `dev@example.com`. Give your app it a name when prompted. Select "Desktop app" for your OAuth Client.  You'll be asked to download client configuration.  Save this file (`credentials.json`) to the `dev-example` directory.
 
-
+Dev will now install the [Google Client Library](https://developers.google.com/drive/api/v3/quickstart/python#step_2_install_the_google_client_library
+), ideally in some sort of virtual environment (that's a topic for another day as there are many ways to manage Python environments).  
 
 # Set up service credentials 
+
+Now that we have enabled the API and installed the necessary libraries, we can set up our service credentials.  This function will create Dev's service credentials. The `service` will be used in all subsequent API calls.
+
+```
+service function goes here.
+```
 
 Scopes here are just read-only
 https://developers.google.com/drive/api/v3/quickstart/python#step_3_set_up_the_sample
