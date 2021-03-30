@@ -321,7 +321,7 @@ def move_files(filelist, new_parent_id):
             file_id = f['id']
             orig_parent = f['parents']
             # Get the original file's parents
-            file = service.files().get(fileId=file_id,
+            previous_parents = service.files().get(fileId=file_id,
                                         fields='parents', supportsAllDrives = True).execute()
             # Remove those parents and add new parents
             file = service.files().update(fileId=file_id,
@@ -330,17 +330,53 @@ def move_files(filelist, new_parent_id):
                                             fields='id, parents', 
                                             supportsAllDrives=True).execute()
             log = [file_id, orig_parent]
-            shared_drive_transfers.append(log)
+            parent_transfers.append(log)
+        except:
+            parent_transfer_errors.append(f['id'])
+
+    return (parent_transfers, parent_transfer_errors)
+
+```
+
+# Move them back to their original parent.  
+
+This is why it's important to keep the log of the original parent.  The function to do this is similar to the one above.  In this case though, our source data is a list of lists.  For each sublist, item at index 0 is the file id and item at index 1 is the parent to restore.
+
+
+```python
+
+def move_files(filelist):
+    """
+    Function takes two arguments
+    * file name to json list of files to transfer as a string
+    * id of the parent to move files to
+    It returns two lists and creates two .json files with those two lists
+    * Files where file was transferred successfully
+    * Files with an error in transferring file
+    """
+    shared_drive_transfers = []
+    shared_drive_transfer_errors = []
+
+    for f in filelist:
+        try:
+            file_id = f[0]
+            # Get the original file's parents
+            previous_parents = service.files().get(fileId=file_id,
+                                        fields='parents', supportsAllDrives = True).execute()
+            # Remove those parents and add new parents
+            file = service.files().update(fileId=file_id,
+                                            addParents=f[1],
+                                            removeParents=previous_parents,
+                                            fields='id, parents', 
+                                            supportsAllDrives=True).execute()
+
+            shared_drive_transfers.append(f[0])
         except:
             shared_drive_transfer_errors.append(f['id'])
 
     return (shared_drive_transfers, shared_drive_transfer_errors)
 
 ```
-
-# Move them back to their original parent.  
-
-This is why it's important to keep the log of the original parent.  Since dev@example.com is not proficient enough with Python and the API, they can not do this themselves.  If they did, they would be the new owner.  However,  ali@example.com has this profiency and ali@example.com can do it.  However, this will make ali@example.com the new owner.  Ali can then transfer ownership from ali@example.com to dev@example.com, because now they are in the same domain.
 
 
 # Removing dev@gmail.com as a user from files
