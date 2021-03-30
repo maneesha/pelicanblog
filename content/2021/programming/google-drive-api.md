@@ -296,10 +296,47 @@ fid = "1234567890"
 f = get_file_info(fid, included_fields)
 ```
 
-# Move the transferred files to a carpentries shared drive, owned by the example.com domain, logging their original parent.  Knowing their original parent will be very important to 
+# Move the transferred files to the Example Company Shared Drive, owned by the example.com domain
 
-Now that the files are owned by example_holder@gmail.com, the authentication steps above should be repeated in a new folder, to give credentials to example_holder@gmail.com.  The shared drive in the example.com domain should include example_holder@gmail.com as a user.
+Now that the files are owned by `example_holder@gmail.com`, [the authentication steps above](#set-up-service-credentials) should be repeated in a new folder, to give credentials to `example_holder@gmail.com`.  The Shared Drive in the `example.com` domain should include `example_holder@gmail.com` as a Content Manager.  We need to log each file's original parent, so that each file can be restored to its original location.
 
+This code can also be used for `dev@example.com` to move files of non-Google Drive types to the Shared Drive, as ownership of these files can not be changed directly.
+
+```python
+
+def move_files_to_shared_drive(filelist, shared_drive_id):
+    """
+    Function takes two arguments
+    * file name to json list of files to transfer as a string
+    * id of the Shared Drive to move files to
+    It returns two lists and creates two .json files with those two lists
+    * Files where file was transferred successfully
+    * Files with an error in transferring file
+    """
+    shared_drive_transfers = []
+    shared_drive_transfer_errors = []
+
+    for f in filelist:
+        try:
+            file_id = f['id']
+            orig_parent = f['parents']
+            # Get the original file's parents
+            file = service.files().get(fileId=file_id,
+                                        fields='parents', supportsAllDrives = True).execute()
+            # Remove those parents and add new parents
+            file = service.files().update(fileId=file_id,
+                                            addParents=shared_drive_id,
+                                            removeParents=previous_parents,
+                                            fields='id, parents', 
+                                            supportsAllDrives=True).execute()
+            log = [file_id, orig_parent]
+            shared_drive_transfers.append(log)
+        except:
+            shared_drive_transfer_errors.append(f['id'])
+
+    return (shared_drive_transfers, shared_drive_transfer_errors)
+
+```
 
 # Move them back to their original parent.  
 
