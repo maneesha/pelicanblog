@@ -271,6 +271,30 @@ transfer_google_file_ownership(dev_google_files.json')
 # Get information about a specific file by file id
 
 This isn't necessarily part of this workflow but it is useful to be able to troubleshoot individual files.
+A key part of this is the `supportsAllDrives` option.  This defaults to `False`. By changing this to `True`, this will search for the `fileid` in Shared Drives as well.  When it's set to `False`, Shared Drives are excluded.
+
+```python
+import sys
+def get_file_info(fileid, parameters_to_get):
+    '''
+    Function takes two arguments: a file id and a csv string of file parameters to get.
+    It returns metadata on the specified file.
+    '''
+    try:
+        info = service.files().get(fileId=fileid, 
+                                   fields=parameters_to_get, 
+                                   supportsAllDrives = True).execute()
+    except: # catch *all* exceptions
+        e = sys.exc_info()
+        info = e
+    return info
+
+# Example use.
+included_fields = "id, kind, name, owners, webViewLink, parents, modifiedTime, permissions, mimeType"
+fid = "1234567890"
+# This will return the text of an error message or the metadata for that file
+f = get_file_info(fid, included_fields)
+```
 
 # Move the transferred files to a carpentries shared drive, owned by the example.com domain, logging their original parent.  Knowing their original parent will be very important to 
 
