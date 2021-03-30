@@ -224,15 +224,53 @@ split_by_file_type(dev_files, 'dev_google_files.json', 'dev_non_google_files.jso
 ```
 
 
-# Change file ownership from dev@gmail.com to example_holder@gmail.com. 
-Ownership can only be transferred within a domain, so you can't transfer directly from dev@gmail.com to dev@example.com.  Since Dev is not super proficient in Python, it's easier to move things to example_holder@gmail.com, and then let the owner of example_holder@gmail.com do the next steps, as the owner of example_holder@gmail.com is fluent in Python and experienced using APIs.  
+# Change file ownership from one `@gmail` account to another `@gmail` account
+Ownership can only be transferred within a domain, so you can't transfer directly from dev@gmail.com to dev@example.com.  This example is included as a way to show how to transfer file ownership within a domain (dev@gmail.com to example_holder@gmail.com), and move file ownership from dev@gmail.com to example-holder@gmail.com.  Later, ownership can be transferred to `dev@example.com` via a [Shared Drive](https://support.google.com/a/answer/7212025).
 
+This intermediary step is not entirely necessary. We could move files to a [Shared Drive](https://support.google.com/a/answer/7212025) directly, and them move them back to their parent location. We may want to do it in a case where Dev is no longer employed at Example Company, and do not want to give them the "keys" to Example Company's workspaces.  Moving files to the Shared Drive and back should happen as soon as possible.  When moving files to a Shared Drive, the links will stay the same, but the file will not be in its expected location, causing some users to have difficulty finding it.
 
+```python
+def transfer_google_file_ownership(file_list):
+    """
+    Function takes one arguments
+    * file name to json list of files to transfer as a string
+    It returns two lists and creates two .json files with those two lists
+    * Files where ownership was transferred successfully
+    * Files with an error in transferring ownership
+    """
+
+    with open(file_list, "r") as read_file:
+        google_files_to_transfer = json.load(read_file)
+
+    ownership_transferred = []
+    ownership_transfer_error = []
+
+    for file in google_files_to_transfer:
+        try:
+            make_user_owner(new_email_owner, file['id'], new_email_permission)
+            ownership_transferred.append(file['id'])
+        except Exception as e:
+            print(type(e))
+            print(e)
+            ownership_transfer_error.append(file['id'])
+
+    # Convert successfully transferred file list to json
+    with open('ownership_transferred.json', 'w') as f:
+        json.dump(ownership_transferred, f)
+
+    # Convert ownership transfer error file list to json
+    with open('ownership_transfer_error.json', 'w') as f:
+        json.dump(ownership_transfer_error, f)
+
+    return (ownership_transferred, ownership_transfer_error)
+
+# Example use.  This will save two files to the current working directory.
+transfer_google_file_ownership(dev_google_files.json')
+
+```
 # Get information about a specific file by file id
 
 This isn't necessarily part of this workflow but it is useful to be able to troubleshoot individual files.
-
-
 
 # Move the transferred files to a carpentries shared drive, owned by the example.com domain, logging their original parent.  Knowing their original parent will be very important to 
 
