@@ -304,17 +304,17 @@ This code can also be used for `dev@example.com` to move files of non-Google Dri
 
 ```python
 
-def move_files_to_shared_drive(filelist, shared_drive_id):
+def move_files(filelist, new_parent_id):
     """
     Function takes two arguments
     * file name to json list of files to transfer as a string
-    * id of the Shared Drive to move files to
+    * id of the parent to move files to
     It returns two lists and creates two .json files with those two lists
     * Files where file was transferred successfully
     * Files with an error in transferring file
     """
-    shared_drive_transfers = []
-    shared_drive_transfer_errors = []
+    parent_transfers = []
+    parent_transfer_errors = []
 
     for f in filelist:
         try:
@@ -325,7 +325,7 @@ def move_files_to_shared_drive(filelist, shared_drive_id):
                                         fields='parents', supportsAllDrives = True).execute()
             # Remove those parents and add new parents
             file = service.files().update(fileId=file_id,
-                                            addParents=shared_drive_id,
+                                            addParents=new_parent_id,
                                             removeParents=previous_parents,
                                             fields='id, parents', 
                                             supportsAllDrives=True).execute()
