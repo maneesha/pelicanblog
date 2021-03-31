@@ -381,9 +381,79 @@ def move_files(filelist):
 
 # Removing dev@gmail.com as a user from files
 
-Since Dev works for Example Company, they should only have access to Example's documents via their dev@example.com email address, not dev@gmail.  This looks for any files where dev@gmail.com has read or edit access, and removes dev@gmail.com entirely.
+Since Dev works for Example Company, they should only have access to Example's documents via their dev@example.com email address, not dev@gmail.  The above steps showed how to transfer ownership. We also need to see where `dev@gmail.com` may have other levels of access to the file, and remove them.  This looks for any files where `dev@gmail.com` has read or edit access, and removes `dev@gmail.com` entirely.
+
+First, we look for all files in our domain.  Of those, they can fall into one of three categories. For this example, I'm referring to them as *Restricted Access*, *Anyone with Link*, and *Errors*.  *Restricted Access* can only be accessed by designated people, and those are the ones we are focusing on here. *Anyone with Link* can be accessed by anyone, so there is no need to remove `dev@gmail.com`.   *Errors* catches all the files that didn't work to troubleshoot later.
+
+```python
+def delete_user(file_id, permission_id):
+    """
+    Function takes two arguments
+    * file id of a file to remove
+    * permission id of the user to remove
+
+    """
+    param_perm = {}
+    remove_user = service.permissions().delete(fileId = file_id,
+                                 permissionId = permission_id, ).execute()
 
 
+restricted_access = []
+anyone_with_link = []
+key_error = []
+
+## Using the all_example_files list we created above, we can go through each file and categorize it.
+## We will then come back just to the restricted_access files.
+
+for j in all_example_files:
+
+    try:
+        file_perms = []
+        
+        for i in j['permissions']:
+            # Create a list of all the existing permissions
+            file_perms.append(i['id'])
+
+        # Check to see if "anyoneWithLink" is included in the file_perms
+        # If so, put the file data in the `anyone_with_link` list
+        if "anyoneWithLink" in file_perms:
+            anyone_with_link.append(j)
+        # If not, put the file data in the `restricted_access` list
+        else: 
+            restricted_access.append(j)
+   
+    except(KeyError):
+        # Put file data for KeyError files in a separate list
+        key_error.append(j)
+
+
+## We now go through the restricted_access list and 
+## run the delete_user function defined above to remove
+## a user from the file.  This goes through a list of users,
+## not just a single user.
+
+gmails_to_remove = [] # list of email addresses to be removed
+removed_access_by_file = []
+errors = []
+
+for k in restricted_access:
+    deleted_users = []
+
+    try:
+        for p in k['permissions']:
+            if p['type'] == 'domain':
+                print(k['id'], "Domain")
+                print(k['webViewLink'])
+            if p['emailAddress'] in gmails_to_remove and p['role'] != "owner":
+                print(k['webViewLink'])
+                print("deleting: ", k['id'], p['emailAddress'] )
+                removed_access_by_file.append([k['id'], p['emailAddress'], p['id']])
+                delete_user(k['id'], p['id'])
+
+    except:
+        errors.append(p['id'])
+        pass
+```
 
 
 
